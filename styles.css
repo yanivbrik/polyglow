@@ -1,0 +1,1065 @@
+/* Layout uses logical properties only (inline/block, start/end), so the same
+   rules hold for right-to-left and left-to-right text. */
+
+:root {
+  color-scheme: light;
+  --bg: #f6f4fb;
+  --surface: #ffffff;
+  --text: #1d1638;
+  --muted: #5d5878;
+  --border: #dcd7ea;
+  --accent: #6a4fd6;
+  --accent-text: #ffffff;
+  --glow: #ffc457;
+  --ok: #1d7a45;
+  --bad: #b3261e;
+  --radius: 12px;
+  --gap: 16px;
+}
+
+/* Dark follows the system unless the settings chose otherwise. The two blocks hold the same colors. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #14102a;
+    --surface: #1d1638;
+    --text: #efeaff;
+    --muted: #b4acd6;
+    --border: #352c5e;
+    --accent: #9d86ff;
+    --accent-text: #14102a;
+    --ok: #6fd69a;
+    --bad: #ff8a80;
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #14102a;
+  --surface: #1d1638;
+  --text: #efeaff;
+  --muted: #b4acd6;
+  --border: #352c5e;
+  --accent: #9d86ff;
+  --accent-text: #14102a;
+  --ok: #6fd69a;
+  --bad: #ff8a80;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+main {
+  max-inline-size: 720px;
+  margin-inline: auto;
+  padding-block: calc(var(--gap) + env(safe-area-inset-top)) calc(var(--gap) * 3 + env(safe-area-inset-bottom));
+  padding-inline: var(--gap);
+}
+
+h1 {
+  font-size: 1.6rem;
+  margin-block: 0 4px;
+}
+
+h2 {
+  font-size: 1.2rem;
+  margin-block: 0 8px;
+}
+
+p {
+  margin-block: 0 8px;
+}
+
+section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--gap);
+  margin-block-end: var(--gap);
+}
+
+ol,
+ul {
+  margin-block: 0 8px;
+  padding-inline-start: 1.4em;
+}
+
+button {
+  font: inherit;
+  min-block-size: 44px;
+  padding-inline: 18px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--accent-text);
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+button.secondary {
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+}
+
+button.danger {
+  background: var(--bad);
+}
+
+input[type="text"],
+textarea,
+select {
+  font: inherit;
+  inline-size: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text);
+}
+
+audio {
+  inline-size: 100%;
+  margin-block: 8px;
+}
+
+pre {
+  font-size: 0.8rem;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  background: var(--bg);
+  border-radius: 8px;
+  padding: 12px;
+  margin-block: 8px 0;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-block: 8px;
+}
+
+.status {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4px 16px;
+  margin: 0;
+}
+
+.status dt {
+  color: var(--muted);
+}
+
+.status dd {
+  margin: 0;
+  text-align: end;
+  font-weight: 600;
+}
+
+.ok {
+  color: var(--ok);
+}
+
+.bad {
+  color: var(--bad);
+}
+
+.check {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin-block: 12px 0;
+  padding-block-start: 12px;
+  border-block-start: 1px dashed var(--border);
+  font-weight: 600;
+}
+
+.check input {
+  inline-size: 22px;
+  block-size: 22px;
+  margin: 2px 0 0;
+  flex-shrink: 0;
+}
+
+.card {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px;
+  margin-block: 8px;
+}
+
+.target {
+  font-size: 1.15rem;
+}
+
+.tiles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tile {
+  border: 1px solid var(--border);
+  border-block-end-width: 3px;
+  border-radius: 8px;
+  padding: 4px 12px;
+  background: var(--bg);
+}
+
+.formats {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  gap: 8px 12px;
+  align-items: center;
+}
+
+h3 {
+  font-size: 1rem;
+  margin-block: 12px 4px;
+}
+
+progress {
+  display: block;
+  inline-size: 100%;
+  block-size: 10px;
+  appearance: none;
+  border: 0;
+  border-radius: 999px;
+  overflow: hidden;
+  background: var(--border);
+}
+
+progress::-webkit-progress-bar {
+  background: var(--border);
+}
+
+progress::-webkit-progress-value {
+  background: var(--accent);
+}
+
+progress::-moz-progress-bar {
+  background: var(--accent);
+}
+
+a {
+  color: var(--accent);
+}
+
+fieldset {
+  border: 0;
+  padding: 0;
+  margin-block: 16px 0;
+}
+
+legend {
+  padding: 0;
+  margin-block-end: 6px;
+  font-weight: 600;
+}
+
+.field {
+  display: block;
+  margin-block: 16px 0;
+}
+
+.field > span {
+  display: block;
+  margin-block-end: 6px;
+  font-weight: 600;
+}
+
+.choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.choices .option {
+  inline-size: auto;
+  flex: 1 1 auto;
+  min-inline-size: 64px;
+}
+
+.option {
+  inline-size: 100%;
+  min-block-size: 52px;
+  padding-block: 8px;
+  padding-inline: 16px;
+  border: 1px solid var(--border);
+  border-block-end-width: 3px;
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
+  text-align: center;
+  transition: transform 80ms ease, background-color 120ms ease, border-color 120ms ease;
+}
+
+.option:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.option:disabled {
+  opacity: 1;
+}
+
+.option.avatar {
+  font-size: 1.5rem;
+  flex: 0 1 auto;
+  padding-inline: 10px;
+}
+
+.option.selected {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 14%, var(--surface));
+}
+
+.option.right,
+.option.matched {
+  border-color: var(--ok);
+  background: color-mix(in srgb, var(--ok) 16%, var(--surface));
+}
+
+.option.matched {
+  opacity: 0.55;
+}
+
+.option.wrong {
+  border-color: var(--bad);
+  background: color-mix(in srgb, var(--bad) 14%, var(--surface));
+}
+
+.option.dim {
+  opacity: 0.5;
+}
+
+.shake {
+  border-color: var(--bad);
+  animation: shake 300ms ease;
+}
+
+@keyframes shake {
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+button.icon {
+  min-inline-size: 44px;
+  padding-inline: 0;
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+button.icon.large {
+  min-inline-size: 72px;
+  min-block-size: 72px;
+  font-size: 1.8rem;
+}
+
+.audio-buttons {
+  display: inline-flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+/* Stays in view while the screen scrolls. It takes over the page's top padding,
+   so it sits at the very top both before and after scrolling, and reaches the
+   screen's edges so nothing shows beside it. */
+.top-bar {
+  position: sticky;
+  inset-block-start: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-block: calc(-1 * (var(--gap) + env(safe-area-inset-top))) var(--gap);
+  margin-inline: calc(-1 * var(--gap));
+  padding-block: calc(8px + env(safe-area-inset-top)) 8px;
+  padding-inline: var(--gap);
+  background: var(--bg);
+  border-block-end: 1px solid var(--border);
+}
+
+.top-bar h1 {
+  flex: 1;
+  min-inline-size: 0;
+  margin: 0;
+  font-size: 1.25rem;
+  overflow-wrap: anywhere;
+}
+
+/* A link that looks like a round icon button: the way back, or the menu. */
+a.icon-link {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  inline-size: 44px;
+  block-size: 44px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text);
+  font-size: 1.3rem;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.menu {
+  display: grid;
+  margin-block-end: var(--gap);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.menu a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-block-size: 52px;
+  padding-inline: var(--gap);
+  color: var(--text);
+  text-decoration: none;
+}
+
+.menu a + a {
+  border-block-start: 1px solid var(--border);
+}
+
+/* Points toward the end of the line, onward, like a closed unit on the home screen. */
+.menu a::after {
+  content: "▾";
+  margin-inline-start: auto;
+  color: var(--muted);
+  transform: rotate(90deg);
+}
+
+.menu a:dir(ltr)::after {
+  transform: rotate(-90deg);
+}
+
+.pills {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.pill {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding-block: 2px;
+  padding-inline: 10px;
+  font-weight: 600;
+}
+
+.welcome-back {
+  border-color: var(--glow);
+  background: color-mix(in srgb, var(--glow) 14%, var(--surface));
+}
+
+.goal-line {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-block-end: 8px;
+  font-weight: 600;
+}
+
+.next-up {
+  display: grid;
+  gap: 16px;
+}
+
+.next-action {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.next-action h2,
+.next-action p {
+  margin: 0;
+}
+
+.next-action button {
+  flex-shrink: 0;
+}
+
+.eyebrow {
+  color: var(--muted);
+  font-weight: 600;
+  margin-block-end: 8px;
+}
+
+.lessons {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.lesson-link {
+  inline-size: 100%;
+  background: transparent;
+  color: var(--text);
+  text-align: start;
+  padding-inline: 8px;
+  border-radius: 8px;
+}
+
+.lesson-link.current {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.lesson-link.done {
+  color: var(--ok);
+}
+
+.unit + .unit {
+  border-block-start: 1px solid var(--border);
+}
+
+.unit summary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-block-size: 48px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.unit summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Points down when open, and toward the end of the line when closed. */
+.unit summary::before {
+  content: "▾";
+  color: var(--muted);
+  transition: transform 120ms ease;
+}
+
+.unit:not([open]) summary::before {
+  transform: rotate(90deg);
+}
+
+.unit:not([open]) summary:dir(ltr)::before {
+  transform: rotate(-90deg);
+}
+
+.unit-title {
+  flex: 1;
+  font-weight: 700;
+}
+
+.unit-count {
+  flex-shrink: 0;
+  font-size: 0.9rem;
+}
+
+.unit .lessons {
+  padding-block-end: 8px;
+}
+
+/* Room below the last option, so the answer bar never covers it. */
+.sitting {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+  padding-block-end: 180px;
+}
+
+.sitting-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sitting-bar progress {
+  flex: 1;
+}
+
+.resume-note {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px 12px;
+  margin-block-start: -8px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.resume-note button.link-button {
+  font-size: 0.9rem;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.step .eyebrow {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.step-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-block-start: 16px;
+}
+
+.step-actions button {
+  flex: 1 1 auto;
+  min-block-size: 50px;
+}
+
+.word-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 24px var(--gap);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  text-align: center;
+}
+
+.word-card p {
+  margin: 0;
+}
+
+.emoji {
+  font-size: 3.4rem;
+  line-height: 1.1;
+}
+
+.word {
+  font-size: 1.7rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.meaning {
+  font-size: 1.2rem;
+}
+
+.example {
+  padding: 12px var(--gap);
+  border-inline-start: 4px solid var(--glow);
+  background: var(--surface);
+  border-radius: 8px;
+}
+
+.example p {
+  margin-block-end: 4px;
+}
+
+.tip {
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.tip-note {
+  color: var(--muted);
+  margin: 0;
+}
+
+.tip-example {
+  font-size: 1.15rem;
+  font-weight: 600;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin: 0;
+  text-align: center;
+}
+
+.tip-example p {
+  margin: 0;
+}
+
+.tip-meaning {
+  color: var(--muted);
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.prompt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+}
+
+.prompt-line {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+  text-align: center;
+}
+
+.options {
+  display: grid;
+  gap: 8px;
+}
+
+.scene {
+  margin: 0;
+}
+
+.conversation-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.conversation {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Each speaker keeps one side of the screen, whichever way the interface runs. */
+button.bubble,
+div.bubble {
+  display: block;
+  align-self: flex-start;
+  max-inline-size: 88%;
+  min-inline-size: 40%;
+  min-block-size: 0;
+  padding-block: 8px;
+  padding-inline: 14px;
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  text-align: start;
+}
+
+button.bubble.mine,
+div.bubble.mine {
+  align-self: flex-end;
+  background: color-mix(in srgb, var(--accent) 12%, var(--surface));
+}
+
+button.bubble.playing {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+
+.bubble-text {
+  display: block;
+}
+
+.bubble-speaker {
+  display: block;
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* With its words hidden a line takes one row, so the whole conversation fits on a phone. */
+.bubble.closed .bubble-speaker {
+  display: inline;
+}
+
+.bubble-hidden {
+  margin-inline-start: 10px;
+  color: var(--muted);
+  letter-spacing: 2px;
+}
+
+.match {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.match-column {
+  display: grid;
+  gap: 8px;
+  align-content: start;
+}
+
+.match .option {
+  overflow-wrap: anywhere;
+  padding-inline: 6px;
+}
+
+.tile-answer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-content: flex-start;
+  min-block-size: 112px;
+  padding-block: 8px;
+  border-block-end: 2px solid var(--border);
+}
+
+.tile-pool {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+}
+
+button.tile {
+  color: var(--text);
+  min-block-size: 44px;
+  background: var(--surface);
+  padding-inline: 12px;
+}
+
+button.tile:disabled {
+  opacity: 1;
+}
+
+/* A chosen word stays readable in the pool, so it is clear what is left and what was picked. */
+button.tile.used:disabled {
+  color: var(--muted);
+  background: transparent;
+  border-style: dashed;
+  opacity: 0.6;
+}
+
+input.answer {
+  font-size: 1.2rem;
+  padding: 12px;
+  background: var(--surface);
+}
+
+.feedback {
+  position: fixed;
+  inset-inline: 0;
+  inset-block-end: 0;
+  z-index: 1;
+  display: grid;
+  gap: 8px;
+  padding-block: var(--gap) calc(var(--gap) + env(safe-area-inset-bottom));
+  padding-inline: max(var(--gap), calc((100% - 720px) / 2 + var(--gap)));
+  border-block-start: 3px solid;
+  animation: rise 160ms ease-out;
+}
+
+.feedback.good {
+  border-color: var(--ok);
+  background: color-mix(in srgb, var(--ok) 16%, var(--bg));
+}
+
+.feedback.miss {
+  border-color: var(--bad);
+  background: color-mix(in srgb, var(--bad) 14%, var(--bg));
+}
+
+.feedback p {
+  margin: 0;
+}
+
+.feedback-title {
+  font-weight: 700;
+}
+
+.feedback button {
+  min-block-size: 50px;
+}
+
+@keyframes rise {
+  from { transform: translateY(12px); opacity: 0; }
+}
+
+button.link-button {
+  min-block-size: 32px;
+  padding-inline: 4px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.85rem;
+  text-decoration: underline;
+}
+
+.report-area {
+  text-align: center;
+}
+
+.report-form {
+  text-align: start;
+}
+
+.report-status {
+  font-size: 0.85rem;
+}
+
+.game-now {
+  min-inline-size: 2ch;
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.game-score {
+  font-size: 3.4rem;
+  font-weight: 700;
+  line-height: 1.1;
+  margin: 0;
+  color: var(--accent);
+}
+
+/* The native picker is hidden behind a regular button. */
+.file-input {
+  display: none;
+}
+
+.restore-confirm .status {
+  margin-block-end: 8px;
+}
+
+.summary {
+  text-align: center;
+}
+
+.summary .status {
+  text-align: start;
+  margin-block-end: 8px;
+}
+
+.toki-big {
+  font-size: 4rem;
+  line-height: 1.1;
+  text-align: center;
+  margin-block-end: 8px;
+}
+
+/* Tuki, drawn. Inline, the size of a line of text; big, at the head of a screen. */
+.toki {
+  position: relative;
+  display: inline-block;
+  inline-size: 1.6em;
+  block-size: 1.6em;
+  vertical-align: -0.45em;
+}
+
+.toki svg {
+  position: relative;
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.toki.big {
+  display: block;
+  inline-size: 7.5rem;
+  block-size: 7.5rem;
+  margin-inline: auto;
+  margin-block-end: 8px;
+}
+
+/* The light Tuki gives off when the learner succeeds. */
+.toki.glow::before {
+  content: "";
+  position: absolute;
+  /* Wider than Tuki, so the light fades out before the edge instead of being cut off. */
+  inset: -10%;
+  background: radial-gradient(circle closest-side at 50% 54%, rgb(255 196 87 / 0.95), rgb(255 196 87 / 0.45) 55%, rgb(255 196 87 / 0));
+  animation: glow 1.8s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0%, 100% { opacity: 0.7; transform: scale(0.92); }
+  50% { opacity: 1; transform: scale(1.04); }
+}
+
+.toki.pop {
+  animation: pop 0.55s cubic-bezier(0.3, 1.6, 0.5, 1) both;
+}
+
+@keyframes pop {
+  from { transform: scale(0.5); opacity: 0; }
+}
+
+.brand .wordmark {
+  display: block;
+  block-size: 2.8rem;
+  inline-size: auto;
+  margin-inline: auto;
+  margin-block: 4px 12px;
+}
+
+.confetti {
+  position: fixed;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.profile-list {
+  display: grid;
+  gap: 8px;
+}
+
+.option.profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: start;
+}
+
+.profile .avatar {
+  font-size: 1.6rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+.banner {
+  position: sticky;
+  inset-block-start: 0;
+  z-index: 1;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--glow);
+  color: #1d1638;
+  border-radius: var(--radius);
+  padding-block: 8px;
+  padding-inline: 16px 8px;
+  /* The top bar after it reaches up over this margin, as it does over the page's top padding. */
+  margin-block-end: calc(var(--gap) + env(safe-area-inset-top));
+}
