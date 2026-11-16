@@ -1,0 +1,119 @@
+{
+  "lang": "en",
+  "dir": "ltr",
+  "sentences": [
+    "Excuse me, could you tell me where the nearest bus stop is?",
+    "I've been living here for about twenty-five years, and I still love it.",
+    "Wait, you didn't read the message? The meeting moved to Thursday at 3:30!"
+  ],
+  "voices": [
+    {
+      "id": "piper-lessac",
+      "engine": "Piper",
+      "name": "Lessac",
+      "accent": "US",
+      "license": "Blizzard 2013 research licence",
+      "files": [
+        "piper-lessac-1.mp3",
+        "piper-lessac-2.mp3",
+        "piper-lessac-3.mp3"
+      ]
+    },
+    {
+      "id": "piper-ryan",
+      "engine": "Piper",
+      "name": "Ryan",
+      "accent": "US",
+      "license": "CC BY-NC-SA 4.0",
+      "files": [
+        "piper-ryan-1.mp3",
+        "piper-ryan-2.mp3",
+        "piper-ryan-3.mp3"
+      ]
+    },
+    {
+      "id": "piper-alba",
+      "engine": "Piper",
+      "name": "Alba",
+      "accent": "GB",
+      "license": "CC BY 4.0",
+      "files": [
+        "piper-alba-1.mp3",
+        "piper-alba-2.mp3",
+        "piper-alba-3.mp3"
+      ]
+    },
+    {
+      "id": "kokoro-heart",
+      "engine": "Kokoro",
+      "name": "Heart",
+      "accent": "US",
+      "license": "Apache 2.0",
+      "files": [
+        "kokoro-heart-1.mp3",
+        "kokoro-heart-2.mp3",
+        "kokoro-heart-3.mp3"
+      ]
+    },
+    {
+      "id": "kokoro-bella",
+      "engine": "Kokoro",
+      "name": "Bella",
+      "accent": "US",
+      "license": "Apache 2.0",
+      "files": [
+        "kokoro-bella-1.mp3",
+        "kokoro-bella-2.mp3",
+        "kokoro-bella-3.mp3"
+      ]
+    },
+    {
+      "id": "kokoro-michael",
+      "engine": "Kokoro",
+      "name": "Michael",
+      "accent": "US",
+      "license": "Apache 2.0",
+      "files": [
+        "kokoro-michael-1.mp3",
+        "kokoro-michael-2.mp3",
+        "kokoro-michael-3.mp3"
+      ]
+    },
+    {
+      "id": "kokoro-fenrir",
+      "engine": "Kokoro",
+      "name": "Fenrir",
+      "accent": "US",
+      "license": "Apache 2.0",
+      "files": [
+        "kokoro-fenrir-1.mp3",
+        "kokoro-fenrir-2.mp3",
+        "kokoro-fenrir-3.mp3"
+      ]
+    },
+    {
+      "id": "kokoro-emma",
+      "engine": "Kokoro",
+      "name": "Emma",
+      "accent": "GB",
+      "license": "Apache 2.0",
+      "files": [
+        "kokoro-emma-1.mp3",
+        "kokoro-emma-2.mp3",
+        "kokoro-emma-3.mp3"
+      ]
+    },
+    {
+      "id": "kokoro-george",
+      "engine": "Kokoro",
+      "name": "George",
+      "accent": "GB",
+      "license": "Apache 2.0",
+      "files": [
+        "kokoro-george-1.mp3",
+        "kokoro-george-2.mp3",
+        "kokoro-george-3.mp3"
+      ]
+    }
+  ]
+}
